@@ -26,6 +26,16 @@ simple_train_dtm_vect = vect.transform(simple_train)
 simple_train_dtm_vect.toarray()
 pd.DataFrame(simple_train_dtm_vect.toarray(),columns=vect.get_feature_names())
 
+#We use TfidTransformer to covert the text corpus into the feature vectors, 
+#we restrict the maximum features to 10000.
+from sklearn.feature_extraction.text import TfidfTransformer
+from sklearn.feature_extraction.text import TfidfVectorizer
+vectorizer = TfidfVectorizer()
+train_vectors = vectorizer.fit_transform(tokens)
+train_vectors.toarray()
+test_vectors = vectorizer.transform(X_test)
+print(train_vectors.shape, test_vectors.shape)
+
 
 # using Tokenizer
 from keras.preprocessing.text import Tokenizer
